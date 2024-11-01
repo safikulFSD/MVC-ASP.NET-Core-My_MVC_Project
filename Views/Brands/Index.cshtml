@@ -1,0 +1,47 @@
+﻿@model IEnumerable<My_Project_MVC.Models.InputModel.Brand>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="display-4">Brand List</h2>
+
+<p class="d-flex justify-content-end">
+    <a href="@Url.Action("Create","Brands")" class="btn btn-outline-primary btn-sm"><i class="fa fa-plus-circle"></i> Add New Brand</a>
+</p>
+<table class="table table-bordered table-sm">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubCategory.SubCategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrandName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubCategory.SubCategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrandName)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "Brands", new {id=item.Id})" class="btn btn-outline-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                <a href="@Url.Action("Delete", "Brands", new {id=item.Id})" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+            </td>
+        </tr>
+    }
+
+</table>

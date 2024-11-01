@@ -1,0 +1,39 @@
+﻿@model IEnumerable<My_Project_MVC.Models.InputModel.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="display-4">Category List</h2>
+
+<p class="d-flex justify-content-end">
+    <a href="@Url.Action("Create","Categories")" class="btn btn-outline-primary btn-sm"><i class="fa fa-plus-circle"></i> Add New Category</a>
+</p>
+<table class="table table-bordered table-striped table-sm">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryDescription)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryDescription)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "Categories", new {id=item.Id})" class="btn btn-outline-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                <a href="@Url.Action("Delete", "Categories", new {id=item.Id})" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
